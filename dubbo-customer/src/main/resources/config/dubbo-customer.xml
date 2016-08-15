@@ -1,25 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <dubbo:monitor protocol="registry"/>
+    <import resource="classpath:config/dubbo-property.xml"/>
+    <import resource="classpath:config/dubbo-zookeeper.xml"/>
+    <import resource="classpath:config/dubbo-service.xml"/>
 
-    <dubbo:application name="${rpc.dubbo.application.name}" owner="programmer" organization="dubbox"/>
+    <context:component-scan base-package="com.yc256.intra.dubbo"/>
 
-    <dubbo:registry address="${rpc.dubbo.registry.address}"/>
-
-    <dubbo:protocol name="${rpc.dubbo.protocol.name}" port="${rpc.dubbo.protocol.port}" />
-
-    <!--消费服务-->
-    <dubbo:reference id="helloService" interface="com.yc256.intra.service.HelloWorldService" />
-
-    <!-- 将多个配置文件读取到容器中，交给Spring管理 -->
-    <bean id="myPropertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-        <property name="locations">
-            <list>
-                <value>classpath*:config/dev/zookeeper.properties</value>
-            </list>
-        </property>
-    </bean>
 </beans>
