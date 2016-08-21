@@ -5,7 +5,5 @@
 
     <!-- 注册中心注册配置 -->
     <dubbo:monitor protocol="registry"/>
-    <!--<dubbo:application name="${rpc.dubbo.application.name}" owner="programmer" organization="dubbox"/>-->
-    <!--<dubbo:registry address="${rpc.dubbo.registry.address}"/>-->
     <dubbo:protocol name="${rpc.dubbo.protocol.name}" port="${rpc.dubbo.protocol.port}" />
 </beans>

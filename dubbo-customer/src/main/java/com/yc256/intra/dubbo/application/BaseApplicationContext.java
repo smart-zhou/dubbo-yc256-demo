@@ -1,12 +1,14 @@
 package com.yc256.intra.dubbo.application;
 
+import com.yc256.intra.dubbo.config.CustomerApplicationConfig;
 import org.springframework.beans.BeansException;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
+ *
  * Created by admin on 2016/8/15.
  */
-public class BaseApplicationContext<T> extends ClassPathXmlApplicationContext {
+public class BaseApplicationContext<T extends CustomerApplicationConfig> extends ClassPathXmlApplicationContext {
 
     private T config;
 

@@ -1,12 +1,21 @@
 package com.yc256.intra.dubbo.config;
 
 /**
+ *
  * Created by admin on 2016/8/15.
  */
 public class CustomerApplicationConfig {
     private String appName;
 
     private String zookeeperAddress;
+
+    public CustomerApplicationConfig() {
+    }
+
+    public CustomerApplicationConfig(String appName, String zookeeperAddress) {
+        this.appName = appName;
+        this.zookeeperAddress = zookeeperAddress;
+    }
 
     public String getAppName() {
         return appName;

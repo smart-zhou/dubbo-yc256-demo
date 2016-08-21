@@ -5,16 +5,18 @@ import com.yc256.intra.dubbo.config.CustomerApplicationConfig;
 import com.yc256.intra.service.HelloWorldService;
 
 /**
- * 消费过者
+ * 消费者
  * Created by admin on 2016/8/13.
  */
 public class CustomerApi {
 
-    private static final CustomerApplication customerApplication = new CustomerApplication(new CustomerApplicationConfig());
+    private static final CustomerApplication customerApplication = new CustomerApplication(
+            new CustomerApplicationConfig("dubbo-customer", "zookeeper://198.74.98.238:2181"),
+            "classpath*:config/dubbo-customer.xml");
 
     private static HelloWorldService helloWorldService;
 
-    static  {
+    static {
         helloWorldService = customerApplication.getBean(HelloWorldService.class);
     }
 
