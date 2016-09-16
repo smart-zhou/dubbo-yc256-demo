@@ -16,14 +16,27 @@ public class CustomerApi {
 
     private static HelloWorldService helloWorldService;
 
-    static {
+    private static void init() {
         helloWorldService = customerApplication.getBean(HelloWorldService.class);
     }
 
     public CustomerApi() {
     }
 
+    private static void checkApplication() {
+        if (null == customerApplication) {
+            throw new RuntimeException("未初始化成功");
+        }
+    }
+
+    public static void start() {
+        checkApplication();
+        customerApplication.start();
+        init();
+    }
+
     public static void main(String[] args) {
+        CustomerApi.start();
         System.out.println(CustomerApi.helloWorldService.sayHello("TEST"));
     }
 }
